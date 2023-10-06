@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'optinpage.dart'; // Import the OptInPage widget from optinpage.dart
+import 'optinpage.dart'; // Import the OptInPage widget
 import 'CongratulationsPage.dart'; // Import the CongratulationsPage widget
-import 'package:landing-page/lib/optinpage.dart';
-
-
 
 void main() {
   runApp(MyApp());
