@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'optinpage.dart'; // Import the OptInPage widget from optinpage.dart
+import 'CongratulationsPage.dart'; // Import the CongratulationsPage widget
+
 
 void main() {
   runApp(MyApp());
@@ -9,14 +11,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'A+ Credit Opt-In Page',
-      home: OptInPage(), // Use the OptInPage widget here
+      title: 'A+ Credit',
       theme: ThemeData(
-        primaryColor: Colors.white, // Set primary color to white
+        primaryColor: Colors.white,
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white, // Set navigation bar background color to white
+          backgroundColor: Colors.white,
         ),
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => OptInPage(),
+        '/congratulations': (context) => CongratulationsPage(),
+      },
     );
   }
 }

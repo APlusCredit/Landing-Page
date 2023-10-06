@@ -20,18 +20,18 @@ class _OptInPageState extends State<OptInPage> {
           child: Text(
             'BECOME APPROVAL READY FOR A HOME OR HIGH-LIMIT CREDIT CARD!',
             style: TextStyle(
-              color: Color(0xFF008A00),
+              color: Color(0xFFFFFFFF),
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF008A00),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0.5), // Reduce the underline height
+          preferredSize: Size.fromHeight(0.5),
           child: Container(
-            color: Color(0xFF008A00), // Green underline color
+            color: Color(0xFFFFFFFF),
             height: 0.5,
           ),
         ),
@@ -53,11 +53,14 @@ class _OptInPageState extends State<OptInPage> {
                       ),
                     ),
                     SizedBox(height: 20.0),
+                    if (!isLargeScreen) // Only show this image on small screens
+                      Image.asset('assets/score.png'),
+                    SizedBox(height: 20.0),
                     Text(
                       'ARE YOU READY TO BECOME\nAPPROVAL READY!?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: isLargeScreen ? 33.0 : 18.0,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF008A00),
                       ),
@@ -65,16 +68,17 @@ class _OptInPageState extends State<OptInPage> {
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle button click
+                        Navigator.of(context).pushNamed('/congratulations');
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF008A00),
-                        minimumSize: Size(double.infinity, 50.0), // Double the button size
+                        minimumSize: Size(double.infinity, 50.0),
                       ),
                       child: Text(
                         'FREE CREDIT CONSULTATION!',
                         style: TextStyle(
                           color: Colors.white,
+                          fontSize: isLargeScreen ? 33.0 : 18.0,
                         ),
                       ),
                     ),
@@ -108,7 +112,7 @@ class _OptInPageState extends State<OptInPage> {
                           SizedBox(height: 10.0),
                           ElevatedButton(
                             onPressed: () {
-                              // Handle button click
+                              Navigator.of(context).pushNamed('/congratulations');
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xFF008A00),
@@ -127,21 +131,26 @@ class _OptInPageState extends State<OptInPage> {
                     ),
                   Expanded(
                     flex: 1,
-                    child: Image.asset('assets/score.png'),
+                    child: !isLargeScreen
+                        ? SizedBox() // Empty container to occupy space instead of the image
+                        : Image.asset('assets/score.png'), // Keep this for large screens
                   ),
                 ],
               ),
 
+
+
               SizedBox(height: 20.0),
               Container(
-                color: Color(0xFF008A00), // Green background color
+                color: Color(0xFF008A00),
                 padding: EdgeInsets.all(10.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center, // Center the content horizontally
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(height: 20.0),
                     Text(
-                      'UNLOCK YOUR FULL FINANCIAL POTENTIAL WITH A+ CREDIT!',
+                      'UNLOCK YOUR FULL FINANCIAL POTENTIAL WITH \nA+ CREDIT!',
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     SizedBox(height: 20.0),
@@ -151,7 +160,7 @@ class _OptInPageState extends State<OptInPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 10.0),
@@ -161,98 +170,108 @@ class _OptInPageState extends State<OptInPage> {
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 20.0),
                     Text(
-                      '- Are sick and tired of living with bad credit and not seeing your credit score go up.',
+                      '- Are sick and tired of living with bad credit and not seeing your credit score go up.\n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      '- Have tried fixing your credit in the past and saw no results.',
+                      '- Have tried fixing your credit in the past and saw no results.\n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      "- Are tired of paying monthly fees to credit companies that lack communication.",
+                      "- Are tired of paying monthly fees to credit companies that lack communication.\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      "- Want to improve your credit so you can finally get approved for your dream house or get the capital you need to start or scale your business.",
+                      "- Want to improve your credit so you can finally get approved for your dream house or get the capital you need to start or scale your business.\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      "- Want a done-for-you credit repair team who will work on your credit every month until your inaccurate negative accounts are removed from your credit report.",
+                      "- Want a done-for-you credit repair team who will work on your credit every month until your inaccurate negative accounts are removed from your credit report.\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      "- Are looking to buy a house within 6 - 12 months and need a score boost.",
+                      "- Are looking to buy a house within 6 - 12 months and need a score boost.\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      "If this sounds too good to be true, then we personally invite you to book a credit consultation below, and we'll prove it to you.",
+                      "BENEFITS OF OUR SERVICE\n",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "BOOST YOUR CREDIT SCORE FAST\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "REMOVE NEGATIVE ITEMS FROM YOUR CREDIT REPORT\n",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "ACHIEVE FINANCIAL FREEDOM\n",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      "If this sounds too good to be true, then we personally invite you to book a credit consultation, and we'll prove it to you.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ],
                 ),
               ),
-
-              SizedBox(height: 20.0),
-              Container(
-                padding: EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Benefits of Our Credit Repair Services:',
-                      style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10.0),
-                    Text('- Boost your credit score fast.'),
-                    Text('- Remove negative items from your credit report.'),
-                    Text('- Access personalized credit improvement plans.'),
-                    Text('- Achieve financial freedom.'),
-                  ],
-                ),
-              ),
-
-              // Replace the "Results" section with "OUR RESULTS" and side-by-side elements
               SizedBox(height: 20.0),
               Text(
-                'OUR RESULTS',
+                'CLIENT RESULTS',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 33.0,
@@ -267,14 +286,14 @@ class _OptInPageState extends State<OptInPage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/test1.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                     Image.asset(
                       'assets/test2.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                   ],
@@ -284,15 +303,15 @@ class _OptInPageState extends State<OptInPage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/test1.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 10.0),
                     Image.asset(
                       'assets/test2.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                   ],
@@ -304,14 +323,14 @@ class _OptInPageState extends State<OptInPage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/test3.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                     Image.asset(
                       'assets/test4.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                   ],
@@ -321,23 +340,21 @@ class _OptInPageState extends State<OptInPage> {
                   children: <Widget>[
                     Image.asset(
                       'assets/test3.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 10.0),
                     Image.asset(
                       'assets/test4.webp',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 400.0,
+                      height: 600.0,
                       fit: BoxFit.cover,
                     ),
                   ],
                 ),
-
-              // Footer Content
               Container(
-                color: Color(0xFF008A00), // Green background color
+                color: Color(0xFF008A00),
                 padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -347,23 +364,25 @@ class _OptInPageState extends State<OptInPage> {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle button click
+                        Navigator.of(context).pushNamed('/congratulations');
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white, // Yellow button color
+                        primary: Colors.white,
                       ),
-                      child: Text(
-                        'FREE CREDIT CONSULTATION',
-                        style: TextStyle(
+                      child: Center(
+                        child: Text(
+                          'FREE CREDIT CONSULTATION',
+                          style: TextStyle(
                             fontSize: 20.0,
-                          color: Color(0xFF008A00), // White text color
+                            color: Color(0xFF008A00),
+                          ),
                         ),
                       ),
                     ),
@@ -374,7 +393,7 @@ class _OptInPageState extends State<OptInPage> {
                       'the "A+ Credit Program".',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 10.0),
@@ -382,7 +401,7 @@ class _OptInPageState extends State<OptInPage> {
                       '© 2023 A Plus Credit LLC\nAll Rights Reserved | Privacy Policy',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 10.0),
@@ -404,7 +423,7 @@ class _OptInPageState extends State<OptInPage> {
                       'that you’re fully responsible for the investments you make & any outcomes that may result.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white, // White text color
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 10.0),
@@ -418,7 +437,7 @@ class _OptInPageState extends State<OptInPage> {
                           child: Text(
                             'Terms & Conditions',
                             style: TextStyle(
-                              color: Colors.white, // White text color
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -430,7 +449,7 @@ class _OptInPageState extends State<OptInPage> {
                           child: Text(
                             'Privacy Policy',
                             style: TextStyle(
-                              color: Colors.white, // White text color
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -442,7 +461,7 @@ class _OptInPageState extends State<OptInPage> {
                           child: Text(
                             'Disclaimer',
                             style: TextStyle(
-                              color: Colors.white, // White text color
+                              color: Colors.white,
                             ),
                           ),
                         ),
