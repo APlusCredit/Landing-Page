@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'optinpage.dart'; // Import the OptInPage widget
 import 'CongratulationsPage.dart'; // Import the CongratulationsPage widget
 
+
 void main() {
   runApp(MyApp());
 }
