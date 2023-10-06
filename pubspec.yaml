@@ -28,7 +28,3 @@ flutter:
     - assets/test4.webp
     - assets/credit.webp
   uses-material-design: true
-  fonts:
-    - family: bela
-      fonts:
-      -  asset: fonts/bela.ttf
